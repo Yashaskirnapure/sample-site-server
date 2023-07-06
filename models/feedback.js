@@ -4,15 +4,15 @@ const { Schema } = require('mongoose');
 const feedback = new Schema({
     name: {
         type: String,
-        required: [true]
+        required: true
     },
-    Email: {
+    email: {
         type: String,
-        require: [true]
+        required: true
     },
     body: {
         type: String,
-        require: [true]
+        required: true
     }
 });
 
