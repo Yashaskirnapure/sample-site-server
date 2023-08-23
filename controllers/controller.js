@@ -17,6 +17,10 @@ const postFeedback = async(req, res) => {
         return res.status(200).json({msg : "post succesful", success: true});
     }catch(err){
         console.log("error posting");
+        if (err instanceof mongoose.Error.ValidationError) {
+            const errorMessages = Object.values(err.errors).map((error) => error.message);
+            return res.status(400).json({error: errorMessages, success: false});
+          }
         return res.status(500).json({msg: "Something went wrong", success: false});
     }
 }
